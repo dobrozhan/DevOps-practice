@@ -22,6 +22,7 @@
 - ⚡ Homework 2 - "Security hardening"
     
     All testing results are enclosed on [Google Doc](https://docs.google.com/document/d/1j6QeDBlXAxQKk2I4ZHPzLU5qgVu6py67pnz97jmd870/edit?usp=sharing).
+    
     Task 1. Prerequisites\
     Two hosts:\
     local WSL2 host - Ubuntu 20.04.2 LTS (`93.170.71.195`) 	          as Debian-based Linux distribution\
