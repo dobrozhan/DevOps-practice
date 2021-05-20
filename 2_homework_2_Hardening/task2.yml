@@ -10,7 +10,7 @@
 
   tasks:
     - name: Deny all connections to ssh service
-      lineinfile:
+      ansible.builtin.lineinfile:
         path: /etc/hosts.deny
         line: "sshd : ALL"
         owner: root
