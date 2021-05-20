@@ -17,7 +17,7 @@
    `lsb_release -d | cut -d":" -f2 | awk '{$1=$1};1'`
 
    For optional task, please switch branch to **optional**. **Main** branch is the solution for core task.\
-   Please, not that instances are shutdown, request me to go this task live (dobrozhan.a@gmail.com).
+   Please, note that instances are shutdown, request me to go this task live (dobrozhan.a@gmail.com).
 
 - ⚡ Homework 2 - "Security hardening"
     
