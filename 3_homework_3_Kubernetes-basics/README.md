@@ -220,3 +220,9 @@ k get po
 11. See pod details
 
 k describe po
+
+
+NOTES
+1. ascinema for coding presented on
+2. Core solution presented on https://youtu.be/1_cRj-NVCSg
+3. Solution for addition task presented on https://youtu.be/PAM0Jw4LN2E
