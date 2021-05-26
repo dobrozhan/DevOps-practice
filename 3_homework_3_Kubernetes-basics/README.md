@@ -172,7 +172,7 @@ d images
 
 d tag IMAGE_ID gcr.io/basecamp-globallogic-21/demo:v1.0.0
 
-37. Push image to Google container registry
+38. Push image to Google container registry
 
 d push gcr.io/basecamp-globallogic-21/demo:v1.0.0
 
