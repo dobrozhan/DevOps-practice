@@ -1,5 +1,5 @@
 Task
-По дз, много времени не займет и должно быть интересным:
+
 [BASE]
 1. Закрепить материал на практике
 2. Докинуть нетворк в ваш контейнер, поднятый runc (внести изменения в config.json - можно воспользоваться https://medium.com/@Mark.io/https-medium-com-mark-io-network-setup-with-runc-containers-46b5a9cc4c5b)
