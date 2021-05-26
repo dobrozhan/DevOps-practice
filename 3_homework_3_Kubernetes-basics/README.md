@@ -21,6 +21,7 @@ alias k=kubectl
 2. Create dir demo and cd to it
 
 mkdir demo
+
 cd demo
 
 3. Pull image busybox from Docker Hub registry
@@ -70,6 +71,7 @@ exit
 14. Edit config.json to add demo_network namespace
 
 vim config.json
+
 "path": "/var/run/netns/demo_network"
 
 15. See available net namespaces
