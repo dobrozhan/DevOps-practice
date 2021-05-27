@@ -51,7 +51,7 @@
 
 9. Initialize config.json
 
-`run spec`
+`runc spec`
 
 10. Switch to root bash
 
