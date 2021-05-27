@@ -159,9 +159,9 @@
 
 `vim containerfile`
 
-`FROM busybox
-CMD while true; do { echo -e "HTTP/1.1 200 OK\r\n"; } | ns -vlp 8000; done
-EXPOSE 8000`
+`FROM busybox`
+`CMD while true; do { echo -e "HTTP/1.1 200 OK\r\n"; } | ns -vlp 8000; done`
+`EXPOSE 8000`
 
 35. Build docker image using containerfile
 
@@ -202,7 +202,7 @@ EXPOSE 8000`
 6. Change permission for all to read /etc/rancher/k3s/k3s.yaml and exit root bash
 
 `chmod a+r /etc/rancher/k3s/k3s.yaml`
-exit
+`exit`
 
 7. Inspect k3s installation
 
