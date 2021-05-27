@@ -1,4 +1,4 @@
-Task
+## Task
 
 [BASE]
 
@@ -10,7 +10,7 @@ Task
 
 4. Поднять кубер любым способом и запустить свой имедж как деплоймент
 
-Solution
+## Solution
 
 [BASE]
 1. Create aliases
