@@ -167,7 +167,7 @@
 
 35. Build docker image using containerfile
 
-`docker build -f containerfile .`
+`d build -f containerfile .`
 
 36. Check available docker images
 
