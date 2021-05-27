@@ -4,7 +4,7 @@
 
   Docker Hub repository containing [build](https://hub.docker.com/repository/docker/dobrozhan/onelinewebserver) image.
 
-- 🔭 # Homework 1 - "Ansible"
+- 🔭 Homework 1 - "Ansible"
 
    1 main host, WSL2 on Windows 10 with IPv4 \
    `IP_0 = 93.170.67.131`\
@@ -19,7 +19,7 @@
    For optional task, please switch branch to **optional**. **Main** branch is the solution for core task.\
    Please, note that instances are shutdown, request me to go this task live (dobrozhan.a@gmail.com).
 
-- 🔭 # Homework 2 - "Security hardening"
+- 🔭 Homework 2 - "Security hardening"
     
     All testing results are enclosed on [Google Doc](https://docs.google.com/document/d/1j6QeDBlXAxQKk2I4ZHPzLU5qgVu6py67pnz97jmd870/edit?usp=sharing).
     
