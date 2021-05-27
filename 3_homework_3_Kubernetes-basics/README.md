@@ -229,6 +229,6 @@
 
 
 NOTES
-1. asciinema for coding: [Core solution](https://asciinema.org/a/416595) [Ext solution]()
+1. asciinema for coding: [Core solution](https://asciinema.org/a/416595) and [Ext solution](https://asciinema.org/a/dZy24YeAycZSu7HTnH5nrmHWd)
 2. Online core solution presented on [YouTube](https://youtu.be/1_cRj-NVCSg)
 3. Online ext solution presented on [YouTube](https://youtu.be/PAM0Jw4LN2E) 
