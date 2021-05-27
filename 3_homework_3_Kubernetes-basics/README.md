@@ -1,4 +1,4 @@
-## Task
+## Task :man_technologist:
 
 [BASE]
 
@@ -10,7 +10,7 @@
 
 4. Поднять кубер любым способом и запустить свой имедж как деплоймент
 
-## Solution
+## Solution :monocle_face:
 
 [BASE]
 1. Create aliases
