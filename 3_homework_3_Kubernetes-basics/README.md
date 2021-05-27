@@ -17,7 +17,6 @@
 
     `alias d=docker`
 
-    `alias k=kubectl`
 
 2. Create dir demo and cd to it
 
