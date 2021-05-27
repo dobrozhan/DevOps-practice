@@ -1,10 +1,10 @@
 ### Hi👋👋👋 Welcome to my notes for Telco DevOps Basecamp Spring GlobalLogic!
 
-- ⚡ Initial selection task
+- 🔭 Initial selection task
 
   Docker Hub repository containing [build](https://hub.docker.com/repository/docker/dobrozhan/onelinewebserver) image.
 
-- ⚡ Homework 1 - "Ansible"
+- 🔭 Homework 1 - "Ansible"
 
    1 main host, WSL2 on Windows 10 with IPv4 \
    `IP_0 = 93.170.67.131`\
@@ -19,7 +19,7 @@
    For optional task, please switch branch to **optional**. **Main** branch is the solution for core task.\
    Please, note that instances are shutdown, request me to go this task live (dobrozhan.a@gmail.com).
 
-- ⚡ Homework 2 - "Security hardening"
+- 🔭 Homework 2 - "Security hardening"
     
     All testing results are enclosed on [Google Doc](https://docs.google.com/document/d/1j6QeDBlXAxQKk2I4ZHPzLU5qgVu6py67pnz97jmd870/edit?usp=sharing).
     
@@ -32,9 +32,13 @@
     
     Task 2. Prerequisites\
     Additional 3rd host (35.226.212.101) for testing purposes.
-     
-    ...
+  
+ - 🔭 Homework 3 - "Kubernetes basic"
+    1. asciinema for coding: [Core solution](https://asciinema.org/a/416595) and [Ext solution](https://asciinema.org/a/dZy24YeAycZSu7HTnH5nrmHWd)
+    2. Online core solution presented on [YouTube](https://youtu.be/1_cRj-NVCSg)
+    3. Online ext solution presented on [YouTube](https://youtu.be/PAM0Jw4LN2E) 
 
+    ...
 <!--
 **dobrozhan/dobrozhan** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
