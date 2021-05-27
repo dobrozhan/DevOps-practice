@@ -105,7 +105,7 @@
 
 22. Configure CIDR for veth-demo interface
 
-`sudo ip netns exec demo_network id addr add 192.168.10.1/24 dev veth-demo`
+`sudo ip netns exec demo_network ip addr add 192.168.10.1/24 dev veth-demo`
 
 23. Up veth-demo interface
 
