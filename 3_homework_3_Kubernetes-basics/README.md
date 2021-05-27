@@ -229,6 +229,6 @@
 
 
 NOTES
-1. asciinema for coding presented on
-2. Core solution presented on [YouTube](https://youtu.be/1_cRj-NVCSg)
-3. Solution for addition task presented on [YouTube](https://youtu.be/PAM0Jw4LN2E) 
+1. asciinema for coding: [Core solution](https://asciinema.org/a/416595) [Ext solution]()
+2. Online core solution presented on [YouTube](https://youtu.be/1_cRj-NVCSg)
+3. Online ext solution presented on [YouTube](https://youtu.be/PAM0Jw4LN2E) 
