@@ -180,7 +180,7 @@ $ d tag IMAGE_ID gcr.io/basecamp-globallogic-21/demo:v1.0.0
 ```
 $ d push gcr.io/basecamp-globallogic-21/demo:v1.0.0
 ```
----
+--
 [EXT]
 
 1. Create GCP instance and ssh to it (GCP console)
