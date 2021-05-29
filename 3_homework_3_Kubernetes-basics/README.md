@@ -25,55 +25,56 @@ $ mkdir demo
 $ cd demo
 ```
 3. Pull image busybox from Docker Hub registry
-
-    `d pull busybox`
-
+```
+$ d pull busybox
+```
 4. Display docker images on host
-
-    `d images`
-
+```
+$ d images
+```
 5. Create root dir for image
-
-    `mkdir rootfs`
-
+```
+$ mkdir rootfs
+```
 6. Run image in container
-
-    `d run busybox`
-
+```
+$ d run busybox
+```
 7. See containers
-
-    `d ps -a`
-
+```
+$ d ps -a
+```
 8. Export container, extract it to rootfs dir
-
-    `d export CONTAINER_ID | tar xf - -C rootfs/`
-
+```
+$ d export CONTAINER_ID | tar xf - -C rootfs/
+```
 9. Initialize config.json
-
-    `runc spec`
-
+```
+$ runc spec
+```
 10. Switch to root bash
-
-    `sudo bash`
-
+```
+$ sudo bash
+```
 11. Run demo image using runc
-
-    `runc run demo`
-
+```
+$ runc run demo
+```
 12. Display network interfaces in demo image
-
-    `ip a`
-
+```
+$ ip a
+```
 13. Exit from image
-
-    `exit`
-
+```
+$ exit
+```
 14. Edit config.json to add demo_network namespace
-
-    `vim config.json`
-
-    `"path": "/var/run/netns/demo_network"`
-
+```
+$ vim config.json
+```
+```
+"path": "/var/run/netns/demo_network"
+```
 15. See available net namespaces
 
     `sudo ip netns ls`
