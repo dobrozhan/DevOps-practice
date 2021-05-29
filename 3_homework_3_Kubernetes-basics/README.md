@@ -13,7 +13,7 @@
 ## Solution :monocle_face:
 
 [BASE]
-1. Create aliases
+1. Create alias
 ```
 $ alias d=docker
 ```
