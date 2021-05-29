@@ -17,14 +17,13 @@
 ```
 $ alias d=docker
 ```
-
-
 2. Create dir demo and cd to it
-
-    `mkdir demo`
-
-    `cd demo`
-
+```
+$ mkdir demo
+```
+```
+$ cd demo
+```
 3. Pull image busybox from Docker Hub registry
 
     `d pull busybox`
