@@ -11,7 +11,7 @@
 4. Поднять кубер любым способом и запустить свой имедж как деплоймент
 
 ## Solution :monocle_face:
-
+---
 [BASE]
 1. Create aliases
 ```
@@ -180,6 +180,7 @@ $ d tag IMAGE_ID gcr.io/basecamp-globallogic-21/demo:v1.0.0
 ```
 $ d push gcr.io/basecamp-globallogic-21/demo:v1.0.0
 ```
+---
 [EXT]
 
 1. Create GCP instance and ssh to it (GCP console)
@@ -203,8 +204,6 @@ $ sudo bash
 6. Change permission for all to read /etc/rancher/k3s/k3s.yaml and exit root bash
 ```
 # chmod a+r /etc/rancher/k3s/k3s.yaml
-```
-```
 # exit
 ```
 7. Inspect k3s installation
