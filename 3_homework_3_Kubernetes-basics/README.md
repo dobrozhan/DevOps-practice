@@ -14,8 +14,9 @@
 
 [BASE]
 1. Create aliases
-
-    ```alias d=docker```
+```
+$ alias d=docker
+```
 
 
 2. Create dir demo and cd to it
