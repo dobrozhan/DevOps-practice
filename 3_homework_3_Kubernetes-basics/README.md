@@ -212,7 +212,7 @@ $ k get all -A
 ```
 8. Create deployment from image demo on gcr.io
 ```
-$ k create deploy --image=gcr.io/basecamp-globallogic-21/demo:v1.0.0
+$ k create deploy demo --image=gcr.io/basecamp-globallogic-21/demo:v1.0.0
 ```
 9. See deploy details
 ```
