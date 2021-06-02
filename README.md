@@ -3,7 +3,7 @@
  -  ...
 
 
- - 🔭 Homework 3 - "Kubernetes basic"
+ - 🔭 Homework 3 - "Kubernetes"
     Please, follow to [target directory](https://github.com/dobrozhan/GLBaseCamp2021/tree/main/3_homework_3_Kubernetes-basics).
 
 
