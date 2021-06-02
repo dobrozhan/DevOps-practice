@@ -231,3 +231,8 @@ NOTES
 1. asciinema for coding: [Core solution](https://asciinema.org/a/416595) and [Ext solution](https://asciinema.org/a/dZy24YeAycZSu7HTnH5nrmHWd)
 2. Online core solution presented on [YouTube](https://youtu.be/1_cRj-NVCSg)
 3. Online ext solution presented on [YouTube](https://youtu.be/PAM0Jw4LN2E) 
+
+## Task 2. Solution. :man_technologist:
+1. asciinema for kubernetes hardway: [1-8 steps](https://asciinema.org/a/417535), [9-14 steps](https://asciinema.org/a/417538)
+2. asciinema for practice with IPVS [Ext solution](https://asciinema.org/a/417539)
+3. solution for game of PODs (Bravo, Pento, Redis Islands, Tyro) [Based on tutorial provided by Kode Kloude](https://github.com/dobrozhan/GLBaseCamp2021/blob/main/3_homework_3_Kubernetes-basics/gameOfPods)
