@@ -422,7 +422,11 @@ spec:
       targetPort: 16379
       protocol: TCP
 ---
-=== TYRO challenge ===
+
+
+===TYRO challenge===
+
+
 kubectl create role developer-role --resource=pods,svc,pvc --verb=* --namespace=development
 kubectl create rolebinding developer-rolebinding -n development --role=developer-role --user=drogo
 kubectl config set-credentials drogo --client-certificate=/root/drogo.crt --client-key=/root/drogo.key
