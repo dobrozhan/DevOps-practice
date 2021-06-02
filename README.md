@@ -1,4 +1,4 @@
-### Hi👋. Welcome to my notes for Telco DevOps Basecamp Spring GlobalLogic!
+### Welcome to my notes for Telco DevOps Basecamp Spring GlobalLogic 2021
 
  -  ...
 
