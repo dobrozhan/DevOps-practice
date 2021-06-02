@@ -67,7 +67,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: "5Gi"
+      storage: 5Gi
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -85,7 +85,7 @@ kubectl create -f pvc.yaml
 kubectl get pvc
 
 
-5. Create secrets by imperative command
+5. Create and describe secrets by imperative commands
 
 kubectl create secret generic drupal-mysql-secret --from-literal=MYSQL_ROOT_PASSWORD=root_password --from-literal=MYSQL_DATABASE=drupal-database --from-literal=MYSQL_USER=root
 
