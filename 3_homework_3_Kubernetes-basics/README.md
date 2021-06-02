@@ -1,7 +1,7 @@
 ## Task 2. Solution. :man_technologist:
-1. asciinema for kubernetes hardway: [1-8 steps](https://asciinema.org/a/417535), [9-14 steps](https://asciinema.org/a/417538)
-2. asciinema for practice with IPVS [Ext solution](https://asciinema.org/a/417539)
-3. solution for game of PODs (Bravo, Pento, Redis Islands, Tyro) [Based on tutorial provided by Kode Kloud](https://github.com/dobrozhan/GLBaseCamp2021/blob/main/3_homework_3_Kubernetes-basics/gameOfPods)
+1. [BASE] asciinema for kubernetes hardway: [1-8 steps](https://asciinema.org/a/417535), [9-14 steps](https://asciinema.org/a/417538)
+2. [EXT] asciinema for practice with IPVS [Ext solution](https://asciinema.org/a/417539)
+3. [OVER] solution for game of PODs (Bravo, Pento, Redis Islands, Tyro) [Based on tutorial provided by Kode Kloud](https://github.com/dobrozhan/GLBaseCamp2021/blob/main/3_homework_3_Kubernetes-basics/gameOfPods)
 
 
 ## Task 1. Solution. :man_technologist:
