@@ -1,5 +1,6 @@
 ### Hi👋👋👋 Welcome to my notes for Telco DevOps Basecamp Spring GlobalLogic!
 
+
  - 🔭 Homework 3 - "Kubernetes basic"
     Please, follow to [target directory](https://github.com/dobrozhan/GLBaseCamp2021/tree/main/3_homework_3_Kubernetes-basics).
 
