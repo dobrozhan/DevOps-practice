@@ -1,8 +1,11 @@
-### Hi👋👋👋 Welcome to my notes for Telco DevOps Basecamp Spring GlobalLogic!
+### Hi👋. Welcome to my notes for Telco DevOps Basecamp Spring GlobalLogic!
+
+ -  ...
 
 
  - 🔭 Homework 3 - "Kubernetes basic"
     Please, follow to [target directory](https://github.com/dobrozhan/GLBaseCamp2021/tree/main/3_homework_3_Kubernetes-basics).
+
 
 - 🔭 Homework 2 - "Security hardening"
     
@@ -17,6 +20,7 @@
     
     Task 2. Prerequisites\
     Additional 3rd host (35.226.212.101) for testing purposes.
+  
   
   - 🔭 Homework 1 - "Ansible"
 
@@ -33,13 +37,10 @@
    For optional task, please switch branch to **optional**. **Main** branch is the solution for core task.\
    Please, note that instances are shutdown, request me to go this task live (dobrozhan.a@gmail.com).
   
+  
   - 🔭 Initial selection task
 
   Docker Hub repository containing [build](https://hub.docker.com/repository/docker/dobrozhan/onelinewebserver) image.
-
-
-
-    ...
 <!--
 **dobrozhan/dobrozhan** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
