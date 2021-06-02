@@ -1,0 +1,425 @@
+Initialization
+
+1. Create postgres db container
+
+docker container run --name drupal_db -d -v drupal_data:/var/lib/postgresql/data -e POSTGRES_USER:postgres -e POSTGRES_PASSWORD:postgres -e POSTGRES_DATABASE:postgres postgres:latest
+
+2. Create drupal container
+
+d container run --name drupal -d -v drupal_modules:/var/www/html/modules -v drupal_profiles:/var/www/html/profiles -v drupal_themes:/var/www/html/themes -v drupal_sites:/var/www/html/sites -p 80:80 --link drupal_db:drupal-postgres drupal:latest
+
+
+===BRAVO challenge===
+
+1. Explore cluster
+
+kubectl get nodes
+
+2. Creare dirs for drupal on nodes
+
+ssh node01
+
+mkdir /drupal-data
+mkdir /drupal-mysql-data
+
+3. Create processing volumes
+
+vim pv.yaml
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: drupal-mysql-pv
+spec:
+  accessModes: ["ReadWriteOnce"]
+  capacity:
+    storage: "5Gi"
+  hostPath:
+    path: /drupal-mysql-data
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: drupal-pv
+spec:
+  accessModes: ["ReadWriteOnce"]
+  capacity:
+    storage: 5Gi
+  hostPath:
+    path: /drupal-data
+
+kubectl apply -f pv.yaml
+
+kubectl get pv
+
+4. Create processing volume claim
+
+vim pvc.yaml
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: drupal-mysql-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: "5Gi"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: drupal-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+kubectl create -f pvc.yaml
+
+kubectl get pvc
+
+
+5. Create secrets by imperative command
+
+kubectl create secret generic drupal-mysql-secret --from-literal=MYSQL_ROOT_PASSWORD=root_password --from-literal=MYSQL_DATABASE=drupal-database --from-literal=MYSQL_USER=root
+
+kubectl describe secrets drupal-mysql-secret
+
+6. Create mysql deployment as a service
+
+vim drupal-mysql.yaml
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: drupal-mysql
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: drupal:mysql
+    spec:
+      containers:
+         env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: drupal-mysql-secret
+                key: MYSQL_ROOT_PASSWORD
+          - name: MYSQL_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: drupal-mysql-secret
+                key: MYSQL_DATABASE
+          - name: MYSQL_USER
+            valueFrom:
+              secretKeyRef:
+                name: drupal-mysql-secret
+                key: MYSQL_USER
+         image: "mysql:5.7"
+         name: cont-drupal-mysql
+         ports:
+           - containerPort: 3306
+             name: mysql
+             protocol: TCP
+         volumeMounts:
+           - mountPath: /var/lib/mysql
+             name: vol-drupal
+             subPath: dbdata
+      volumes:
+        - name: vol-drupal
+          persistentVolumeClaim:
+            claimName: drupal-mysql-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: drupal-mysql-service
+spec:
+  ports:
+    - name: drupal-mysql
+      port: 3306
+      protocol: TCP
+  selector:
+    app: drupal-mysql
+
+7. Create deployment
+
+vim drupal.yaml
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drupal
+  labels:
+    app: drupal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drupal
+  template:
+    metadata:
+      labels:
+        app: drupal
+    spec:
+      initContainers:
+      - name: init-sites-volume
+        image: drupal:8.6
+        command: ['/bin/bash', '-c']
+        args: ['cp -r /var/www/html/sites/ /data/; chown www-data:www-data /data/ -R']
+        volumeMounts:
+        - mountPath: /data
+          name: vol-drupal
+      containers:
+      - image: drupal:8.6
+        name: drupal
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /var/www/html/modules
+          name: vol-drupal
+          subPath: modules
+        - mountPath: /var/www/html/profiles
+          name: vol-drupal
+          subPath: profiles
+        - mountPath: /var/www/html/sites
+          name: vol-drupal
+          subPath: sites
+        - mountPath: /var/www/html/themes
+          name: vol-drupal
+          subPath: themes
+      volumes:
+      - name: vol-drupal
+        persistentVolumeClaim:
+          claimName: drupal-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: drupal-service
+spec:
+  type: NodePort
+  selector:
+    app: drupal
+  ports:
+    - name: http
+      port: 80
+      nodePort: 30095
+
+===PENTO challenge===
+
+Create PersistentVolume data-pv, PersistentVolumeClaim data-pvc, Pod gop-fileserver, and Service gop-fs-service
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: data-pv
+spec:
+  storageClassName: local-storage
+  capacity:
+    storage: 1Gi
+  accessModes: [ "ReadWriteMany" ]
+  hostPath:
+    path: /web
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-pvc
+spec:
+  storageClassName: local-storage
+  accessModes:
+  - ReadWriteMany
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gop-fileserver
+spec:
+  containers:
+  - name: fileserver
+    image: kodekloud/fileserver
+    volumeMounts:
+      - name: data-store
+        mountPath: /web
+  volumes:
+    - name: data-store
+      persistentVolumeClaim:
+        claimName: data-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gop-fs-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      nodePort: 31200
+  selector:
+    app: gop-fileserver
+---
+
+===Redis islands challenge===
+
+Create PersistentVolume redis01, redis02, redis03, redis04, redis05, redis06; StatefulSet redis-cluster, and Service redis-cluster-service
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis01
+spec:
+  storageClassName: local-storage
+  capacity:
+    storage: 1Gi
+  accessModes: [ "ReadWriteOnce" ]
+  hostPath:
+    path: /redis01
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis02
+spec:
+  storageClassName: local-storage
+  capacity:
+    storage: 1Gi
+  accessModes: [ "ReadWriteOnce" ]
+  hostPath:
+    path: /redis02
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis03
+spec:
+  storageClassName: local-storage
+  capacity:
+    storage: 1Gi
+  accessModes: [ "ReadWriteOnce" ]
+  hostPath:
+    path: /redis03
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis04
+spec:
+  storageClassName: local-storage
+  capacity:
+    storage: 1Gi
+  accessModes: [ "ReadWriteOnce" ]
+  hostPath:
+    path: /redis04
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis05
+spec:
+  storageClassName: local-storage
+  capacity:
+    storage: 1Gi
+  accessModes: [ "ReadWriteOnce" ]
+  hostPath:
+    path: /redis05
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis06
+spec:
+  storageClassName: local-storage
+  capacity:
+    storage: 1Gi
+  accessModes: [ "ReadWriteOnce" ]
+  hostPath:
+    path: /redis06
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis-cluster
+spec:
+  serviceName: redis-cluster
+  replicas: 6
+  selector:
+    matchLabels:
+      app: redis-cluster
+  template:
+    metadata:
+      labels:
+        app: redis-cluster
+    spec:
+      containers:
+      - name: redis
+        image: redis:5.0.1-alpine
+        ports:
+        - containerPort: 6379
+          name: client
+        - containerPort: 16379
+          name: gossip
+        command: ["/conf/update-node.sh", "redis-server", "/conf/redis.conf"]
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        volumeMounts:
+        - name: conf
+          mountPath: /conf
+          readOnly: false
+        - name: data
+          mountPath: /data
+          readOnly: false
+      volumes:
+      - name: conf
+        configMap:
+          name: redis-cluster-configmap
+          defaultMode: 0755
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      storageClassName: local-storage
+      accessModes: [ "ReadWriteOnce" ]
+      volumeMode: Filesystem
+      resources:
+        requests:
+          storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-cluster-service
+spec:
+  selector:
+    app: redis-cluster
+  ports:
+    - name: client
+      port: 6379
+      targetPort: 6379
+      protocol: TCP
+    - name: gossip
+      port: 16379
+      targetPort: 16379
+      protocol: TCP
+---
+
