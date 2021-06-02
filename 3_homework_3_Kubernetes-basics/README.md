@@ -1,4 +1,4 @@
-## Task 1. Solution :man_technologist:
+## Task 1. Solution. :man_technologist:
 [BASE]
 1. Create alias
 ```
