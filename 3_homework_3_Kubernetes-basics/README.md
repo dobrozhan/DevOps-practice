@@ -99,7 +99,7 @@ k edit svc demo-1
 ```
 curl 35.226.6.88:80
 ```
-[BASE] using repo creat pod with secrets
+[BASE] using repo creat pod with secrets. [asciinema](https://asciinema.org/a/418496)
 1. Let's encrypt secrets
 ```
 echo -n 'pass_1' | base64
@@ -158,6 +158,7 @@ k apply -f ./app-secret-env.yaml
 ```
 k get pod app-secret-env
 ```
+
 
 ## Task 2. Solution :man_technologist:
 [BASE] asciinema for kubernetes hardway: [1-8 steps](https://asciinema.org/a/417535), [9-14 steps](https://asciinema.org/a/417538)
