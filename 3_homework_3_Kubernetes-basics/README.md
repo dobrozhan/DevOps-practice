@@ -61,7 +61,7 @@ k get svc
 ```
 7. Check if connection has been established
 ```
-curl 35.226.6.88:80
+curl EXTERNAL-IP:80
 ```
 8. Get pod's labels
 ```
@@ -97,7 +97,7 @@ k edit svc demo-1
 ```
 16. In such scenario, only 1/10 request will come to demo-2, and 9/10 to - demo-1
 ```
-curl 35.226.6.88:80
+curl EXTERNAL-IP:80
 ```
 [BASE] using repo creat pod with secrets. [asciinema](https://asciinema.org/a/418496)
 1. Let's encrypt secrets
