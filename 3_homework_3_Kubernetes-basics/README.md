@@ -1,5 +1,5 @@
 ## Task 3. Solution :man_technologist:
-[BASE] 2 versions of application and canary
+[BASE] 2 versions of application and canary. [Asciinema](https://asciinema.org/a/418500)
 1. Probe cluster info
 ```
 $ k version
@@ -99,7 +99,7 @@ k edit svc demo-1
 ```
 curl EXTERNAL-IP:80
 ```
-[BASE] using repo creat pod with secrets. [asciinema](https://asciinema.org/a/418496)
+[BASE] using repo creat pod with secrets. [Asciinema](https://asciinema.org/a/418496)
 1. Let's encrypt secrets
 ```
 echo -n 'pass_1' | base64
