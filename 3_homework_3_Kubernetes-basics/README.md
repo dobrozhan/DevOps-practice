@@ -38,6 +38,63 @@ k get svc -n test
 wget -O /tmp/g.png https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png
 curl -F 'image=@/tmp/g.png'   APIGW_IP_ADDR/img/
 ```
+[BASE] Ставим стек эластика [оператором](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-eck.html). [Asciinema](https://asciinema.org/a/418680).
+
+1. Install custom resource definitions and the operator with its RBAC rules
+```
+k apply -f https://download.elastic.co/downloads/eck/1.6.0/all-in-one.yaml
+```
+2. Monitor the operator logs
+```
+k -n elastic-system logs -f statefulset.apps/elastic-operator
+```
+3. Create 2 kinds: Elasticsearch and Kibana
+```
+cat <<EOF | kubectl apply -f -
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: quickstart
+spec:
+  version: 7.13.1
+  nodeSets:
+  - name: default
+    count: 1
+    config:
+      node.store.allow_mmap: false
+EOF
+```
+```
+kubectl get elasticsearch
+```
+```
+cat <<EOF | kubectl apply -f -
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
+metadata:
+  name: quickstart
+spec:
+  version: 7.13.1
+  count: 1
+  elasticsearchRef:
+    name: quickstart
+EOF
+```
+```
+kubectl get kibana
+```
+4. Get to Kibana UI on http://localhost:5601
+```
+PASSWORD=$(kubectl get secret quickstart-es-elastic-user -o go-template='{{.data.elastic | base64decode}}')
+```
+```
+k get svc
+k port-forward svc/quickstart-kb-http 5601
+
+username: elastic
+password: $PASSWORD
+```
+
 
 ## Task 3. Solution :man_technologist:
 [BASE] 2 versions of application and canary. [Asciinema](https://asciinema.org/a/418500)
