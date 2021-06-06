@@ -1,5 +1,5 @@
 ## Task 4. Solution :man_technologist:
-[BASE] Run up app https://github.com/den-vasyliev/go-demo-app with helm. Troubleshoot minors. Check readiness by 
+[BASE] Run app https://github.com/den-vasyliev/go-demo-app with helm. Troubleshoot minors. Check readiness by 
 ```
  wget -O /tmp/g.png https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png
  curl -F 'image=@/tmp/g.png'   APIGW_IP_ADDR/img/
