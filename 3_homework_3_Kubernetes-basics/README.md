@@ -108,6 +108,13 @@ Output
 ```
 cGFzc18x
 ```
+```
+echo -n '2_pass' | base64
+```
+Output
+```
+Ml9wYXNz
+```
 2. Let's create secret using declarative style from secret.yaml
 ```
 ---
