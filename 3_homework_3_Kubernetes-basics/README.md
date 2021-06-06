@@ -1,3 +1,44 @@
+## Task 4. Solution :man_technologist:
+[BASE] Run up app https://github.com/den-vasyliev/go-demo-app with helm. Troubleshoot minors. Check readiness by 
+```
+ wget -O /tmp/g.png https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png
+ curl -F 'image=@/tmp/g.png'   APIGW_IP_ADDR/img/
+```
+[Asciinema](XXX)
+
+1. Let's get rid off warnings. Simply we need to change rbac.authorization.k8s.io/v1beta1 Role to rbac.authorization.k8s.io/v1 Role
+```
+vim charts/api-gateway/templates/rbac.yaml
+```
+2. To get rid off 'manifest_sorter.go:192: info: skipping unknown hook: "crd-install"'  we need to create cdr/ dir in
+```
+mkdir charts/nats/crds/
+mv charts/nats/templates/customresourcedefinition.yaml charts/nats/crds/
+```
+3. Also, we need to move to crd directory another custom resource definition NatsCluster charts/nats/templates/natscluster.yaml
+```
+mv charts/nats/templates/natscluster.yaml charts/nats/crds/
+```
+4. Let's create name space "test"
+```
+k create ns test
+```
+5. Let's create template test in namespace test and apply to Kubernetes cluster
+```
+helm template test ./ --namespace test | k apply -n test -f -
+```
+6. Check pods, deploys, services
+```
+k get po -n test
+k get deploy -n test
+k get svc -n test 
+```
+7. Let's check readiness
+```
+wget -O /tmp/g.png https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png
+curl -F 'image=@/tmp/g.png'   APIGW_IP_ADDR/img/
+```
+
 ## Task 3. Solution :man_technologist:
 [BASE] 2 versions of application and canary. [Asciinema](https://asciinema.org/a/418500)
 1. Probe cluster info
