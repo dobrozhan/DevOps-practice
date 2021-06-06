@@ -4,7 +4,7 @@
  wget -O /tmp/g.png https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png
  curl -F 'image=@/tmp/g.png'   APIGW_IP_ADDR/img/
 ```
-[Asciinema](XXX)
+[Asciinema](https://asciinema.org/a/418669)
 
 1. Let's get rid off warnings. Simply we need to change rbac.authorization.k8s.io/v1beta1 Role to rbac.authorization.k8s.io/v1 Role
 ```
