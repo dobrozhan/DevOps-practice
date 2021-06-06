@@ -170,7 +170,7 @@ k get pod app-secret-env
 ```
 ---
 apiVersion: v1
-kind: Deployment
+kind: Pod
 metadata:
   name: app-two-containers
 spec:
