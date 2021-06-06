@@ -271,7 +271,7 @@ curl NODE_IP:NODEPORT
 ```
 11. Test LoadBalancer
 ```
-culr LoadBalancer_IP:80
+curl LoadBalancer_IP:80
 ```
 
 ## Task 2. Solution :man_technologist:
