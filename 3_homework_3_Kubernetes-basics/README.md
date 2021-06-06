@@ -273,6 +273,55 @@ curl NODE_IP:NODEPORT
 ```
 curl LoadBalancer_IP:80
 ```
+[EXT] app-multicontainer-no-lb-np [Asciinema](https://asciinema.org/a/418563)
+1. Check that we do not have helping services, NodePort, LoadBalancer
+```
+k get svc
+```
+2. Let's modify app-two-containers.yaml by specifying hostNetwork:false (to use different ports for pod and container), containerPort for nginx image, hostPort and create new pod
+```
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-two-containers
+spec:
+  hostNetwork: false
+  volumes:
+  - name: html
+    emptyDir: {}
+  containers:
+  - name: 1st
+    image: nginx
+    ports:
+      - containerPort: 80
+        hostPort: 9090
+    volumeMounts:
+    - name: html
+      mountPath: /usr/share/nginx/html
+  - name: 2nd
+    image: debian
+    volumeMounts:
+    - name: html
+      mountPath: /html
+    command: ["/bin/sh", "-c"]
+    args:
+      - while true; do
+          date >> /html/index.html;
+          sleep 1;
+        done
+```
+```
+k apply -f app-two-containers.yaml
+```
+3. Create ingress rule for gcp firewall
+```
+gcloud compute firewall-rules create test-nodeport --allow tcp:9090
+```
+4. Test using node IP where pod is located
+```
+curl NODE_IP:9090
+```
 
 ## Task 2. Solution :man_technologist:
 [BASE] asciinema for kubernetes hardway: [1-8 steps](https://asciinema.org/a/417535), [9-14 steps](https://asciinema.org/a/417538)
