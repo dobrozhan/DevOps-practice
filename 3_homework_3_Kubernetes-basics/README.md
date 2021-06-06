@@ -158,7 +158,114 @@ k apply -f ./app-secret-env.yaml
 ```
 k get pod app-secret-env
 ```
-
+[BASE] app-multicontainer task. [Asciinema](https://asciinema.org/a/418533)
+1. Let's create pod app-two-containers
+```
+---
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: app-two-containers
+spec:
+  volumes:
+  - name: html
+    emptyDir: {}
+  containers:
+  - name: 1st
+    image: nginx
+    volumeMounts:
+    - name: html
+      mountPath: /usr/share/nginx/html
+  - name: 2nd
+    image: debian
+    volumeMounts:
+    - name: html
+      mountPath: /html
+    command: ["/bin/sh", "-c"]
+    args:
+      - while true; do
+          date >> /html/index.html;
+          sleep 1;
+        done
+```
+```
+k apply -f ./app-two-containers.yaml
+```
+2. Get deploys, pods and logs
+```
+k get po
+```
+```
+k describe po
+```
+```
+k logs POD_NAME -c CONTAINER_NAME
+```
+3. Get pod label
+```
+k get po --show-labels
+```
+4. Create label for pod 
+```
+k label po app-two-containers app=app-two-containers
+```
+5. Create NodePort service, nodeport.yaml
+```
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-two-containers-np-service
+spec:
+  selector:
+    app: app-two-containers
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+```
+```
+k apply -f ./nodeport.yaml
+```
+6. Create LoadBalancer service, loadbalancer.yaml
+```
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-two-containers-lb-service
+spec:
+  selector:
+    app: app-two-containers
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+```
+```
+k apply -f ./loadbalancer.yaml
+```
+7. Get created services
+```
+k get svc
+```
+8. Get nodes, to see IPs and test NodePort service
+```
+k get nodes
+```
+9. Create firewall rule to allow TCP traffic to nodes
+```
+gcloud compute firewall-rules create test-node-port --allow tcp:30000-32768
+```
+10. Test NodePort service
+```
+curl NODE_IP:NODEPORT
+```
+11. Test LoadBalancer
+```
+culr LoadBalancer_IP:80
+```
 
 ## Task 2. Solution :man_technologist:
 [BASE] asciinema for kubernetes hardway: [1-8 steps](https://asciinema.org/a/417535), [9-14 steps](https://asciinema.org/a/417538)
