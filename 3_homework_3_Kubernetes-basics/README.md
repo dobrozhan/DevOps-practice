@@ -271,7 +271,7 @@ curl NODE_IP:NODEPORT
 ```
 11. Test LoadBalancer
 ```
-curl LoadBalancer_IP:80
+curl LoadBalancer_EXTERNAL_IP:80
 ```
 [EXT] app-multicontainer-no-lb-np [Asciinema](https://asciinema.org/a/418563)
 1. Check that we do not have helping services, NodePort, LoadBalancer
