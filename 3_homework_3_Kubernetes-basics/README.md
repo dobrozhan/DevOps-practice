@@ -78,6 +78,10 @@ spec:
   count: 1
   elasticsearchRef:
     name: quickstart
+  http:
+    tls:
+      selfSignedCertificate:
+        disabled: true
 EOF
 ```
 ```
