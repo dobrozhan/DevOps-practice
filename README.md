@@ -22,7 +22,7 @@
     Task 2. Prerequisites\
     Additional 3rd host (35.226.212.101) for testing purposes.
   
-  
+ 
   - 🔭 Homework 1 - "Ansible"
 
    1 main host, WSL2 on Windows 10 with IPv4 \
