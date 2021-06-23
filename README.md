@@ -37,8 +37,7 @@
    For optional task, please switch branch to **optional**. **Main** branch is the solution for core task.\
    Please, note that instances are shutdown, request me to go this task live (dobrozhan.a@gmail.com).
   
-  
-  - 🔭 Initial selection task
+- 🔭 Initial selection task
 
   Docker Hub repository containing [build](https://hub.docker.com/repository/docker/dobrozhan/onelinewebserver) image.
 <!--
