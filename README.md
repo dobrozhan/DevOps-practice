@@ -22,9 +22,8 @@
     Task 2. Prerequisites\
     Additional 3rd host (35.226.212.101) for testing purposes.
   
+- 🔭 Homework 1 - "Ansible"
  
-  - 🔭 Homework 1 - "Ansible"
-
    1 main host, WSL2 on Windows 10 with IPv4 \
    `IP_0 = 93.170.67.131`\
    3 hosts deployed as instances on GCP (Linux 20.04 LTS) with IPv4\
