@@ -1,6 +1,6 @@
 1. Link to github repository for gcp account
 
-    ```https://github.com/dobrozhan/dobrozhan.github.io```
+    [```https://github.com/dobrozhan/dobrozhan.github.io```](https://github.com/dobrozhan/dobrozhan.github.io)
 
 2. Commands to set up folder, project and service account
 
