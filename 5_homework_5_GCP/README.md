@@ -10,7 +10,9 @@
 
     ```ID=791825585860```
 
-    ```gcloud organizations add-iam-policy-binding 791825585860 --member=user:dobrozhan.oleksandr@dobrozhan.github.io --role=roles/resourcemanager.folderAdmin```
+    ```gcloud organizations add-iam-policy-binding 791825585860 \
+    --member=user:dobrozhan.oleksandr@dobrozhan.github.io \
+    --role=roles/resourcemanager.folderAdmin```
   
     ```gcloud alpha resource-manager folders create --display-name=gcp_training_root --organization 791825585860```
 
@@ -30,9 +32,9 @@
 
 3. Link to result of working dir in CLI and on Google web interface
 
-```https://github.com/dobrozhan/GLBaseCamp2021/blob/main/5_homework_5_GCP/result_cli_tree.jpg```
+[```https://github.com/dobrozhan/GLBaseCamp2021/blob/main/5_homework_5_GCP/result_cli_tree.jpg```](https://github.com/dobrozhan/GLBaseCamp2021/blob/main/5_homework_5_GCP/result_cli_tree.jpg)
 
-```https://github.com/dobrozhan/GLBaseCamp2021/blob/main/5_homework_5_GCP/result_google_web.jpg```
+[```https://github.com/dobrozhan/GLBaseCamp2021/blob/main/5_homework_5_GCP/result_google_web.jpg```](https://github.com/dobrozhan/GLBaseCamp2021/blob/main/5_homework_5_GCP/result_google_web.jpg)
 
 4. Credentials file (node that I clear private_key_id, private_key, client_x509_cert_url to XXX)
 
