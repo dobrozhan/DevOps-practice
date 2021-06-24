@@ -11,9 +11,9 @@
     ```ID=791825585860```
 
     ```
-        gcloud organizations add-iam-policy-binding 791825585860 
-        --member=user:dobrozhan.oleksandr@dobrozhan.github.io 
-        --role=roles/resourcemanager.folderAdmin
+    gcloud organizations add-iam-policy-binding 791825585860 
+      --member=user:dobrozhan.oleksandr@dobrozhan.github.io 
+      --role=roles/resourcemanager.folderAdmin
     ```
   
     ```gcloud alpha resource-manager folders create --display-name=gcp_training_root --organization 791825585860```
