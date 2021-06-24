@@ -32,24 +32,24 @@
 
 3. Link to result of working dir in CLI and on Google web interface
 
-[```result_cli_tree.jpg```](https://github.com/dobrozhan/GLBaseCamp2021/blob/main/5_homework_5_GCP/result_cli_tree.jpg)
+    [```result_cli_tree.jpg```](https://github.com/dobrozhan/GLBaseCamp2021/blob/main/5_homework_5_GCP/result_cli_tree.jpg)
 
-[```result_google_web.jpg```](https://github.com/dobrozhan/GLBaseCamp2021/blob/main/5_homework_5_GCP/result_google_web.jpg)
+    [```result_google_web.jpg```](https://github.com/dobrozhan/GLBaseCamp2021/blob/main/5_homework_5_GCP/result_google_web.jpg)
 
 4. Credentials file (node that I clear private_key_id, private_key, client_x509_cert_url to XXX)
 
-```
-{
-  "type": "service_account",
-  "project_id": "seed-project-dobrozhan",
-  "private_key_id": "XXX",
-  "private_key": "XXX",
-  "client_email": "project-factory-28896@seed-project-dobrozhan.iam.gserviceaccount.com",
-  "client_id": "107103943195881163316",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "XXX"
-}
-```
+    ```
+    {
+    "type": "service_account",
+    "project_id": "seed-project-dobrozhan",
+    "private_key_id": "XXX",
+    "private_key": "XXX",
+    "client_email": "project-factory-28896@seed-project-dobrozhan.iam.gserviceaccount.com",
+    "client_id": "107103943195881163316",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "XXX"
+    }
+    ```
 
