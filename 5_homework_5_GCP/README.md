@@ -1,42 +1,42 @@
 1. Link to github repository for gcp account
 
-    https://github.com/dobrozhan/dobrozhan.github.io
+    ```https://github.com/dobrozhan/dobrozhan.github.io```
 
 2. Commands to set up folder, project and service account
 
-    gcloud auth login dobrozhan.oleksandr@dobrozhan.github.io
+    ```gcloud auth login dobrozhan.oleksandr@dobrozhan.github.io```
 
-    gcloud organizations list
+    ```gcloud organizations list```
 
-    ID=791825585860
+    ```ID=791825585860```
 
-    gcloud organizations add-iam-policy-binding 791825585860 --member=user:dobrozhan.oleksandr@dobrozhan.github.io --role=roles/resourcemanager.folderAdmin
+    ```gcloud organizations add-iam-policy-binding 791825585860 --member=user:dobrozhan.oleksandr@dobrozhan.github.io --role=roles/resourcemanager.folderAdmin```
   
-    gcloud alpha resource-manager folders create --display-name=gcp_training_root --organization 791825585860
+    ```gcloud alpha resource-manager folders create --display-name=gcp_training_root --organization 791825585860```
 
-    gcloud projects create seed-project-dobrozhan --folder=628265103286
+    ```gcloud projects create seed-project-dobrozhan --folder=628265103286```
 
-    gcloud config set project seed-project-dobrozhan
+    ```gcloud config set project seed-project-dobrozhan```
 
-    gcloud alpha billing accounts list
+    ```gcloud alpha billing accounts list```
 
-    ID=0193AC-BC8CBC-0C606B
+    ```ID=0193AC-BC8CBC-0C606B```
 
-    git clone https://github.com/terraform-google-modules/terraform-google-project-factory
+    ```git clone https://github.com/terraform-google-modules/terraform-google-project-factory```
 
-    cd terraform-google-project-factory/helpers
+    ```cd terraform-google-project-factory/helpers```
 
-    setup-sa.sh -o 791825585860 -p seed-project-dobrozhan -b 0193AC-BC8CBC-0C606B -f 628265103286
+    ```setup-sa.sh -o 791825585860 -p seed-project-dobrozhan -b 0193AC-BC8CBC-0C606B -f 628265103286```
 
 3. Link to result of working dir in CLI and on Google web interface
 
-https://github.com/dobrozhan/GLBaseCamp2021/blob/main/5_homework_5_GCP/result_cli_tree.jpg
+```https://github.com/dobrozhan/GLBaseCamp2021/blob/main/5_homework_5_GCP/result_cli_tree.jpg```
 
-https://github.com/dobrozhan/GLBaseCamp2021/blob/main/5_homework_5_GCP/result_google_web.jpg
+```https://github.com/dobrozhan/GLBaseCamp2021/blob/main/5_homework_5_GCP/result_google_web.jpg```
 
 4. Credentials file (node that I clear private_key_id, private_key, client_x509_cert_url to XXX)
 
-{
+```{
   "type": "service_account",
   "project_id": "seed-project-dobrozhan",
   "private_key_id": "XXX",
@@ -47,5 +47,5 @@ https://github.com/dobrozhan/GLBaseCamp2021/blob/main/5_homework_5_GCP/result_go
   "token_uri": "https://oauth2.googleapis.com/token",
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
   "client_x509_cert_url": "XXX"
-}
+}```
 
