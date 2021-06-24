@@ -10,7 +10,8 @@
 
     ```ID=791825585860```
 
-    ```gcloud organizations add-iam-policy-binding 791825585860 
+    ```
+        gcloud organizations add-iam-policy-binding 791825585860 
         --member=user:dobrozhan.oleksandr@dobrozhan.github.io 
         --role=roles/resourcemanager.folderAdmin
     ```
