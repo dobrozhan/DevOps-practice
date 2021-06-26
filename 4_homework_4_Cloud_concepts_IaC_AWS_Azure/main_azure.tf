@@ -1,6 +1,4 @@
-### Provisioning to Azure services
-
-# Configure the Azure provider
+### Configure the Azure provider ###
 terraform {
   required_providers {
     azurerm = {
@@ -55,7 +53,7 @@ resource "azurerm_network_security_group" "nsg-dobrozhan" {
   }
 }
 
-#create the virtual network
+### create the virtual network ###
 
 resource "azurerm_virtual_network" "vnet-dobrozhan" {
   resource_group_name = azurerm_resource_group.rg-dobrozhan.name
@@ -64,7 +62,7 @@ resource "azurerm_virtual_network" "vnet-dobrozhan" {
   address_space       = ["10.0.0.0/16"]
 }
 
-#create 2 subnets within the virtual network
+### create 2 subnets within the virtual network ###
 
 resource "azurerm_subnet" "subnet1-dobrozhan" {
   resource_group_name  = azurerm_resource_group.rg-dobrozhan.name
@@ -80,7 +78,7 @@ resource "azurerm_subnet" "subnet2-dobrozhan" {
   address_prefixes     = ["10.0.40.0/24"]
 }
 
-#create the network interfaces for VM and LB
+### create the network interfaces for VM and LB ###
 
 resource "azurerm_public_ip" "pub_ip-1" {
   name                = "vmpubip-1"
@@ -106,7 +104,7 @@ resource "azurerm_public_ip" "pub_ip-lb" {
   allocation_method   = "Static"
 }
 
-# create network interface
+### create network interface ###
 
 resource "azurerm_network_interface" "vmnic1-dobrozhan" {
   location            = "westeurope"
@@ -134,7 +132,7 @@ resource "azurerm_network_interface" "vmnic2-dobrozhan" {
   }
 }
 
-# create security group association with network interface
+### create security group association with network interface ###
 
 resource "azurerm_network_interface_security_group_association" "sga-dobrozhan-1" {
   network_interface_id      = azurerm_network_interface.vmnic1-dobrozhan.id
@@ -146,7 +144,7 @@ resource "azurerm_network_interface_security_group_association" "sga-dobrozhan-2
   network_security_group_id = azurerm_network_security_group.nsg-dobrozhan.id
 }
 
-##create two VMs
+### create two VMs ###
 
 resource "azurerm_windows_virtual_machine" "vm-1-dobrozhan" {
   name                = "vm-1-dobrozhan"
@@ -196,7 +194,7 @@ resource "azurerm_windows_virtual_machine" "vm-2-dobrozhan" {
   }
 }
 
-# create load balancer
+### create load balancer ###
 
 resource "azurerm_lb" "lb-dobrozhan" {
   name                = "lb-dobrozhan"
@@ -210,14 +208,14 @@ resource "azurerm_lb" "lb-dobrozhan" {
   }
 }
 
-# create backend address pool
+### create backend address pool ###
 
 resource "azurerm_lb_backend_address_pool" "beap-dobrozhan" {
   name            = "beap-dobrozhan"
   loadbalancer_id = azurerm_lb.lb-dobrozhan.id
 }
 
-# link backend address pool with network addresses
+### link backend address pool with network addresses ###
 
 resource "azurerm_lb_backend_address_pool_address" "beapa1-dobrozhan" {
   name                    = "beapa1-dobrozhan"
@@ -233,7 +231,7 @@ resource "azurerm_lb_backend_address_pool_address" "beapa2-dobrozhan" {
   ip_address              = "10.0.40.4"
 }
 
-# create health probe
+### create health probe ###
 
 resource "azurerm_lb_probe" "hp-dobrozhan" {
   resource_group_name = azurerm_resource_group.rg-dobrozhan.name
@@ -245,7 +243,7 @@ resource "azurerm_lb_probe" "hp-dobrozhan" {
   number_of_probes    = 5
 }
 
-# create load balancing rule
+### create load balancing rule ###
 
 resource "azurerm_lb_rule" "lbrule-dobrozhan" {
   resource_group_name            = azurerm_resource_group.rg-dobrozhan.name
