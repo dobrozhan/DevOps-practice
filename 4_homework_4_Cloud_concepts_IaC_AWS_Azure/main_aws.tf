@@ -1,5 +1,3 @@
-### Provisioning to AWS services
-
 ### Initialize terraform for AWS provider ###
 
 terraform {
@@ -29,53 +27,53 @@ resource "aws_default_vpc" "default" {
 ## Create default subnets ###
 
 resource "aws_subnet" "default_subnet_1" {
-  vpc_id                     = aws_default_vpc.default.id
-  cidr_block                 = "172.31.20.0/24"
-  availability_zone          = "eu-central-1a"
+  vpc_id            = aws_default_vpc.default.id
+  cidr_block        = "172.31.20.0/24"
+  availability_zone = "eu-central-1a"
 }
 
 resource "aws_subnet" "default_subnet_2" {
-  vpc_id                     = aws_default_vpc.default.id
-  cidr_block                 = "172.31.40.0/24"
-  availability_zone          = "eu-central-1b"
+  vpc_id            = aws_default_vpc.default.id
+  cidr_block        = "172.31.40.0/24"
+  availability_zone = "eu-central-1b"
 }
 
 ### Create instance 1 ###
 
 resource "aws_instance" "vm_1" {
-  ami                           = "ami-0bdb7f5a40ca10b7d"
-  instance_type                 = "t2.micro"
-  vpc_security_group_ids        = [aws_security_group.dobrozhan-sg.id]
-  key_name                      = "dobrozhan-vm"
-  subnet_id                     = aws_subnet.default_subnet_1.id
-  associate_public_ip_address   = true
-  monitoring                    = true
-  tags                          = {
-                                    Name = "dobrozhan-vm-1"
-                                }
+  ami                         = "ami-0bdb7f5a40ca10b7d"
+  instance_type               = "t2.micro"
+  vpc_security_group_ids      = [aws_security_group.dobrozhan-sg.id]
+  key_name                    = "dobrozhan-vm"
+  subnet_id                   = aws_subnet.default_subnet_1.id
+  associate_public_ip_address = true
+  monitoring                  = true
+  tags = {
+    Name = "dobrozhan-vm-1"
+  }
 }
 
 ### Create instance 2 ###
 
 resource "aws_instance" "vm_2" {
-  ami                           = "ami-0bdb7f5a40ca10b7d"
-  instance_type                 = "t2.micro"
-  vpc_security_group_ids        = [aws_security_group.dobrozhan-sg.id]
-  key_name                      = "dobrozhan-vm"
-  subnet_id                     = aws_subnet.default_subnet_2.id
-  associate_public_ip_address   = true
-  monitoring                    = true
-  tags                          = {
-                                    Name = "dobrozhan-vm-2"
-                                }
+  ami                         = "ami-0bdb7f5a40ca10b7d"
+  instance_type               = "t2.micro"
+  vpc_security_group_ids      = [aws_security_group.dobrozhan-sg.id]
+  key_name                    = "dobrozhan-vm"
+  subnet_id                   = aws_subnet.default_subnet_2.id
+  associate_public_ip_address = true
+  monitoring                  = true
+  tags = {
+    Name = "dobrozhan-vm-2"
+  }
 }
 
 ### Creare security group ###
 
 resource "aws_security_group" "dobrozhan-sg" {
-  name                          = "dobrozhan security group"
-  description                   = "security group"
-  vpc_id                        = aws_default_vpc.default.id
+  name        = "dobrozhan security group"
+  description = "security group"
+  vpc_id      = aws_default_vpc.default.id
 
   ingress {
     description      = "http"
@@ -112,21 +110,21 @@ resource "aws_security_group" "dobrozhan-sg" {
 ###  Create network load balancer  ###
 
 data "aws_subnet_ids" "sbs" {
-  vpc_id            = aws_default_vpc.default.id
+  vpc_id = aws_default_vpc.default.id
 }
 
 # lb
 
 resource "aws_lb" "network_lb" {
-  name                              = "dobrozhan-lb"
-  internal                          = false
-  load_balancer_type                = "network"
-  enable_cross_zone_load_balancing  = true
-  subnets                           = data.aws_subnet_ids.sbs.ids
+  name                             = "dobrozhan-lb"
+  internal                         = false
+  load_balancer_type               = "network"
+  enable_cross_zone_load_balancing = true
+  subnets                          = data.aws_subnet_ids.sbs.ids
 
-  tags                              = {
-                                        Environment = "prod-dobrozhan"
-                                    }
+  tags = {
+    Environment = "prod-dobrozhan"
+  }
 }
 
 # target group
@@ -144,7 +142,7 @@ resource "aws_lb_listener" "network_lb_ls" {
   load_balancer_arn = aws_lb.network_lb.arn
   port              = 80
   protocol          = "TCP"
-  
+
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.network_lb_tg.arn
