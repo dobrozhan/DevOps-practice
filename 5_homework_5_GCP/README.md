@@ -38,7 +38,7 @@
 
     [```result_google_web.jpg```](https://github.com/dobrozhan/GLBaseCamp2021/blob/main/5_homework_5_GCP/result_google_web.jpg)
 
-4. Credentials file (node that I clear private_key_id, private_key, client_x509_cert_url to XXX)
+4. Credentials file (note that private_key_id, private_key, client_x509_cert_url are set to XXX)
 
     ```
     {
