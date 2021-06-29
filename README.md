@@ -1,4 +1,8 @@
 ### Welcome to my notes for Telco DevOps Basecamp Spring GlobalLogic 2021
+ -  🔭 Homework 5 - "GCP"
+    GCP-1. Please, follow to [target directory](https://github.com/dobrozhan/GLBaseCamp2021/tree/main/5_homework_5_GCP).
+    GCP-2. Please, follow to [target directory](https://github.com/dobrozhan/GLBaseCamp2021/tree/main/6_homework_6_GCP).
+ 
 
  -  🔭 Homework 4 - "Terraform. AWS. Azure"
     Please, follow to [target directory](https://github.com/dobrozhan/GLBaseCamp2021/tree/main/4_homework_4_Cloud_concepts_IaC_AWS_Azure).
